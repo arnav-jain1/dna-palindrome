@@ -1,14 +1,13 @@
 import random
 import time
-f = open("dna.txt", "w")
 
-def createBP():
+def createBP(size):
     strand = ""
     a = 0
     t = 0
     c = 0
     g = 0
-    for num in range(0, 1000000):
+    for num in range(0, size):
         randomNumber = random.randint(0, 3)
         if randomNumber == 0:
             strand += 'a'
@@ -27,8 +26,10 @@ def createBP():
 
 
 def main():
+    size = int(input("How big of a strand do you want to make?\n"))
+    f = open("dna.txt", "w")
     start = time.time()
-    info = createBP()
+    info = createBP(size)
     strand = info[0]
     info.pop(0)
     f.write(strand)
@@ -37,4 +38,5 @@ def main():
     print("A: ", info[0], "\nT: ", info[1], "\nG: ", info[2], "\nC: ", info[3])
     f.close()
     print(f"Time to run code: {totalTime}")
+
 main()
